@@ -1,10 +1,16 @@
 import json
 
-def read_drinks(drinks_json_file):
+# In:   json file path
+# Out:  Python object representing that json file
+#       None if error
+def load_from_json(json_file):
     try:
-        drinks_json = open(drinks_json_file, "r")
-        return json.loads(drinks_json)
+        f = open(json_file, "r")
+        return json.loads(f.read())
     except:
-        # TODO: to display
+        # TODO: check which display to write to
         print("File load/parse error")
         return None
+    finally:
+        f.close()
+    
