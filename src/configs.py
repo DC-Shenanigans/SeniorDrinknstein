@@ -9,5 +9,5 @@ def load_from_json(json_file):
             return json.loads(f.read())
     except:
         # TODO: check which display to write to
-        print("File load/parse error")
+        print("Error reading/parsing '", json_file, "'")
         return None
