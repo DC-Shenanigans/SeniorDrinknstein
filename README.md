@@ -7,10 +7,10 @@ This robot will be 3 rules safe.
 Porqe es muay rapido. 
 
 Required features: 
-- 8 relays for liqor/mixer pumps
+- 9 relays for liqor/mixer pumps
 - 3 relays for tower light
 - 6 functional drink selection buttons
-- One screen for text output
+- One screen for text output (i2c lcd, 20 x 4)
   - Screen will display current status of drink machine
     - Statuses:
       - Ready
