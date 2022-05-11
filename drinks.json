@@ -23,5 +23,15 @@
             "rum":59,
             "maitaimix":118
         }
+    }, {
+        "name":"White Wine",
+        "ingredients": {
+            "whitewine":177
+        }
+    }, {
+        "name":"Red Wine",
+        "ingredients": {
+            "redwine":177
+        }
     }
 ]
