@@ -28,3 +28,5 @@ Drink List:
 |Gin & Tonic|59mL Gin| 118mL Tonic|
 |Margarita|59mL Tequila|118mL Marg. Mixer|
 |Mai Tai| 59mL Rum|118mL Mai Tai Mixer|
+|White Wine| 177mL White Wine| N/A|
+|Red Wine| 177mL Red Wine| N/A|
