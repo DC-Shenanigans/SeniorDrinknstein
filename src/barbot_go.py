@@ -66,7 +66,7 @@ class BarbotGo() :
             for target_gpio in self.basic_gpio.pin_settings:
                 if self.basic_gpio.pin_settings[target_gpio]["drink"] == liquor:
                     timeout = liquor_to_pour[liquor]
-                    self.print_to_display(f"pouring {liquor} for {timeout} ms...")
+                    self.print_to_display(f"pouring {liquor} for {timeout} units of time...")
                     self.basic_gpio.toggle_pin_state(target_gpio)
                     time.sleep(timeout / 10)
                     self.basic_gpio.toggle_pin_state(target_gpio)
