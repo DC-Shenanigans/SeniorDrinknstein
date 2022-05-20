@@ -30,3 +30,18 @@ Drink List:
 |Mai Tai| 59mL Rum|118mL Mai Tai Mixer|
 |White Wine| 177mL White Wine| N/A|
 |Red Wine| 177mL Red Wine| N/A|
+
+
+Pump List:
+
+|Pump |Pump Contains|
+--- | --- |
+|Pump 0|Rum|
+|Pump 1|Gin|
+|Pump 2|Tequila|
+|Pump 3|Red Wine|
+|Pump 4|White Wine|
+|Pump 5|Coke|
+|Pump 6|Tonic|
+|Pump 7|Marg. Mix|
+|Pump 8|Mai Tai Mix|
