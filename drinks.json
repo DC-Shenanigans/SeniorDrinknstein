@@ -1,0 +1,37 @@
+[
+    {
+        "name":"Rum & Coke",
+        "ingredients": {
+            "rum":59,
+            "coke":118
+        }
+    }, {
+        "name":"Gin & Tonic",
+        "ingredients": {
+            "gin":59,
+            "tonic":118
+        }
+    }, {
+        "name":"Margarita",
+        "ingredients": {
+            "tequila":59,
+            "margmix":118
+        }
+    }, {
+        "name":"Mai Tai",
+        "ingredients": {
+            "rum":59,
+            "maitaimix":118
+        }
+    }, {
+        "name":"White Wine",
+        "ingredients": {
+            "whitewine":177
+        }
+    }, {
+        "name":"Red Wine",
+        "ingredients": {
+            "redwine":177
+        }
+    }
+]
