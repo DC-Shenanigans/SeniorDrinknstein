@@ -9,7 +9,7 @@ Porqe es muay rapido.
 Required features: 
 - 9 relays for liquor/mixer pumps
 - 3 relays for tower light
-- 6 functional drink selection buttons
+- 8 functional drink selection buttons (1 or 2 for easter egg)
 - One screen for text output (i2c lcd, 20 x 4)
   - Screen will display current status of drink machine
     - Statuses:
