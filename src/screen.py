@@ -1,18 +1,25 @@
 import board
-import busio
-import adafruit_character_lcd.character_lcd_i2c as character_lcd
+import hd44780
 
 class ScreenGo():
     def __init__(self):
-
-        self.i2c = busio.I2C(board.SCL, board.SDA)
-        cols = 16
-        rows = 2
-        self.lcd = character_lcd.Character_LCD_I2C(self.i2c, cols, rows)
-        self.turn_on_backlight()
+        self.lcd = hd44780.HD44780() # https://github.com/bablokb/circuitpython-hd44780
 
     def write_to_screen(self,message):
-        self.lcd.message = "%s" % message
+        self.lcd.clear()
+        count = 0
+        print = ""
 
-    def turn_on_backlight(self):
-        self.lcd.backlight = True
+        for idx,letter in enumerate(message):
+            print = print + letter
+            if idx % 19 == 0:
+                self.lcd.write(f"{message}", count)
+                count += 1
+                print = ""
+                if count > 4:
+                    print("message too long for screen")
+                    break
+
+        
+
+

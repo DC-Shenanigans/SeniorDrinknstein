@@ -3,13 +3,27 @@
 
 from src.configs import load_from_json
 from src.gpio import BasicGPIO
+from src.screen import ScreenGo
 import time
 
 class BarbotGo() :
     run_mode = None
     def __init__ (self, mode="CONSOLE"):
+        # Init screen
+        self.screen = ScreenGo()
+        
+        # Set mode for some reason even though i'm going to require a screen
         self.run_mode = mode
+
+        # Print startup message
         self.print_to_display("Starting up Dr. McGillicutty's Magic Drink Elixir Mixer")
+
+        # Make them wait
+        for item in range(5,1):
+            self.print_to_display(f"Starting in {item} seconds")
+            time.sleep(1)
+
+
         # TODO: Load in config, for now we can use a placeholder
         self.drink_list = load_from_json("drinks_config.json")
         # Need: GPIO Config (set drink per gpio), Drink mix config (what  makes what drink)
@@ -43,11 +57,10 @@ class BarbotGo() :
                     time.sleep(0.5)
 
     def print_to_display(self, text):
-        if(self.run_mode == "CONSOLE"):
-            print(text)
-        else:
-            print(text)
-            # print("IDKWTFUDO, DO IT BETTER")
+        # Clear the screen
+        self.screen.write_to_screen(text)
+        print(text)
+        # print("IDKWTFUDO, DO IT BETTER")
 
     def make_drink(self):
         self.print_to_display(f"Making {self.drink_selection['name']}...")
@@ -60,6 +73,7 @@ class BarbotGo() :
         for ingredient in ingredients.keys():
             value = ingredients[ingredient]
             liquor_to_pour[ingredient] = value
+            
         start_time = time.time()
         for liquor in liquor_to_pour.keys():
             self.print_to_display(f"Looking for {liquor}...")
@@ -73,3 +87,4 @@ class BarbotGo() :
         
 
 
+    
