@@ -19,17 +19,15 @@ class BarbotGo() :
         self.print_to_display("Starting up Dr. McGillicutty's Magic Drink Elixir Mixer")
 
         # Make them wait
-        for item in range(5,1):
+        for item in range(1,5):
             self.print_to_display(f"Starting in {item} seconds")
             time.sleep(1)
 
-
-        # TODO: Load in config, for now we can use a placeholder
         self.drink_list = load_from_json("drinks_config.json")
-        # Need: GPIO Config (set drink per gpio), Drink mix config (what  makes what drink)
-        # TODO: Initialize all hardware
         self.basic_gpio = BasicGPIO()
-        # TODO: Initialize UX
+        
+        # Turn on the green light baby
+        self.basic_gpio.toggle_pin_state(self.basic_gpio.tower_settings["green"]["pin"])
 
     def main_menu(self):
         if(self.run_mode == "CONSOLE"):
@@ -38,7 +36,6 @@ class BarbotGo() :
             user_input = input("Please select a drink: ")
             try:
                 self.drink_selection = self.drink_list[int(user_input)]
-                # TO DO: Trigger make drink
                 self.make_drink()
             except: 
                 self.print_to_display("NOT A VALID OPTION.")
@@ -64,6 +61,11 @@ class BarbotGo() :
 
     def make_drink(self):
         self.print_to_display(f"Making {self.drink_selection['name']}...")
+        
+        # Set tower light to RED and turn off GREEN
+        self.basic_gpio.toggle_pin_state(self.basic_gpio.tower_settings["green"]["pin"])
+        self.basic_gpio.toggle_pin_state(self.basic_gpio.tower_settings["red"]["pin"])
+
         # use drink config to mix drink
         ingredients = self.drink_selection['ingredients']
         
@@ -85,6 +87,8 @@ class BarbotGo() :
                     time.sleep(timeout / 10)
                     self.basic_gpio.toggle_pin_state(target_gpio)
         
-
+        # Set tower light to GREEN and turn off RED
+        self.basic_gpio.toggle_pin_state(self.basic_gpio.tower_settings["green"]["pin"])
+        self.basic_gpio.toggle_pin_state(self.basic_gpio.tower_settings["red"]["pin"])
 
     

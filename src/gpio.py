@@ -29,13 +29,15 @@ class BasicGPIO():
         self.button_settings["GP9"] = {"pin":board.GP9, "drink":"Override"}
 
         self.tower_settings = {}
-        self.tower_settings["GP10"] = {"pin":board.GP8, "color":"green", "status":False, "mode":None}
-        self.tower_settings["GP11"] = {"pin":board.GP9, "color":"red", "status":True, "mode":"solid"}
-        self.tower_settings["GP12"] = {"pin":board.GP10, "color":"loud", "status":False}
+        self.tower_settings["green"] = {"pin":board.GP10, "color":"green", "status":False, "mode":None}
+        self.tower_settings["red"] = {"pin":board.GP11, "color":"red", "status":True, "mode":"solid"}
+        self.tower_settings["loud"] = {"pin":board.GP12, "color":"loud", "status":False}
 
         self.initialize_gpio()
 
     def initialize_gpio(self):
+        for target_gpio in self.tower_settings:
+            self.initialize_digital_output(target_gpio)
         for target_gpio in self.pin_settings:
             self.initialize_digital_output(target_gpio)
         for target_gpio in self.button_settings:
