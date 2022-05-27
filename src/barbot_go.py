@@ -23,8 +23,11 @@ class BarbotGo() :
         self.basic_gpio = BasicGPIO()
         
         # Turn on the green light baby
+        time.sleep(2.5)
+
         self.basic_gpio.toggle_pin_state("green")
-        self.print_to_display("Ready to mix!")
+        self.idle_message = "Ready to mix!"
+        self.print_to_display(self.idle_message)
 
     def main_menu(self):
         if(self.run_mode == "CONSOLE"):
@@ -84,9 +87,20 @@ class BarbotGo() :
                         self.basic_gpio.toggle_pin_state(target_gpio)
                         time.sleep(timeout / 10)
                         self.basic_gpio.toggle_pin_state(target_gpio)
-        
-        # Set tower light to GREEN and turn off RED
-        self.basic_gpio.toggle_pin_state("green")
+
+        self.print_to_display(f"Your {self.drink_selection['name']}  is ready, please enjoy ^_^")
+
+        #Turn off the red light and on the green
         self.basic_gpio.toggle_pin_state("red")
+        self.basic_gpio.toggle_pin_state("green")
+        
+        # Make green flash for 5 seconds saying it's done
+        for a in range(0,19):
+            self.basic_gpio.toggle_pin_state("green")
+            time.sleep(.25)
+            self.basic_gpio.toggle_pin_state("green")
+
+        self.print_to_display(self.idle_message)
+
 
     
