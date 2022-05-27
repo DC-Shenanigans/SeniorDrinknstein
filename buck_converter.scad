@@ -24,13 +24,13 @@ module buck_converter()
             translate([edge_width, edge_width,-1])
             #cube([width - edge_width_mod, depth - edge_width_mod, 3]);
     }
-    translate([standoff_inset, 37, 0]) 
+    translate([width - standoff_inset, 37, 0]) 
     {
         
         cylinder(standoff_height,standoff_radius,standoff_radius_bevel);
         cylinder(2,2,2);
     }
-    translate([width - standoff_inset, 6, 0]) 
+    translate([standoff_inset, 6, 0]) 
     {
         
         cylinder(standoff_height,standoff_radius,standoff_radius_bevel);

@@ -15,7 +15,7 @@ module power_board()
     standoff_radius_bevel = standoff_radius * standoff_bevel_ratio;
 
     width = 19.3;
-    depth = 99;
+    depth = 98.85;
 
     difference()
     {
@@ -24,13 +24,13 @@ module power_board()
             translate([edge_width, edge_width,-1])
             #cube([width - edge_width_mod, depth - edge_width_mod, 3]);
     }
-    translate([standoff_inset, depth / 2, 0]) 
+    translate([width / 2, standoff_inset , 0]) 
     {
         
         cylinder(standoff_height,standoff_radius,standoff_radius_bevel);
         cylinder(2,2,2);
     }
-    translate([width - standoff_inset, depth / 2, 0]) 
+    translate([ width / 2,depth - standoff_inset, 0]) 
     {
         
         cylinder(standoff_height,standoff_radius,standoff_radius_bevel);
