@@ -18,16 +18,13 @@ class BarbotGo() :
         # Print startup message
         self.print_to_display("Starting up Dr. McGillicutty's Magic Drink Elixir Mixer")
 
-        # Make them wait
-        for item in range(1,5):
-            self.print_to_display(f"Starting in {item} seconds")
-            time.sleep(1)
 
         self.drink_list = load_from_json("drinks_config.json")
         self.basic_gpio = BasicGPIO()
         
         # Turn on the green light baby
-        self.basic_gpio.toggle_pin_state(self.basic_gpio.tower_settings["green"]["pin"])
+        self.basic_gpio.toggle_pin_state("green")
+        self.print_to_display("Ready to mix!")
 
     def main_menu(self):
         if(self.run_mode == "CONSOLE"):
@@ -37,8 +34,8 @@ class BarbotGo() :
             try:
                 self.drink_selection = self.drink_list[int(user_input)]
                 self.make_drink()
-            except: 
-                self.print_to_display("NOT A VALID OPTION.")
+            except Exception as e: 
+                self.print_to_display(f"NOT A VALID OPTION. {e}")
         else:
             # Poll the buttons
             for target_gpio in self.basic_gpio.button_settings:
@@ -63,8 +60,8 @@ class BarbotGo() :
         self.print_to_display(f"Making {self.drink_selection['name']}...")
         
         # Set tower light to RED and turn off GREEN
-        self.basic_gpio.toggle_pin_state(self.basic_gpio.tower_settings["green"]["pin"])
-        self.basic_gpio.toggle_pin_state(self.basic_gpio.tower_settings["red"]["pin"])
+        self.basic_gpio.toggle_pin_state("green")
+        self.basic_gpio.toggle_pin_state("red")
 
         # use drink config to mix drink
         ingredients = self.drink_selection['ingredients']
@@ -75,20 +72,21 @@ class BarbotGo() :
         for ingredient in ingredients.keys():
             value = ingredients[ingredient]
             liquor_to_pour[ingredient] = value
-            
+        
         start_time = time.time()
         for liquor in liquor_to_pour.keys():
             self.print_to_display(f"Looking for {liquor}...")
             for target_gpio in self.basic_gpio.pin_settings:
-                if self.basic_gpio.pin_settings[target_gpio]["drink"] == liquor:
-                    timeout = liquor_to_pour[liquor]
-                    self.print_to_display(f"pouring {liquor} for {timeout} units of time...")
-                    self.basic_gpio.toggle_pin_state(target_gpio)
-                    time.sleep(timeout / 10)
-                    self.basic_gpio.toggle_pin_state(target_gpio)
+                if "drink" in self.basic_gpio.pin_settings[target_gpio]:
+                    if self.basic_gpio.pin_settings[target_gpio]["drink"] == liquor:
+                        timeout = liquor_to_pour[liquor]
+                        self.print_to_display(f"pouring {liquor} for {timeout} units of time...")
+                        self.basic_gpio.toggle_pin_state(target_gpio)
+                        time.sleep(timeout / 10)
+                        self.basic_gpio.toggle_pin_state(target_gpio)
         
         # Set tower light to GREEN and turn off RED
-        self.basic_gpio.toggle_pin_state(self.basic_gpio.tower_settings["green"]["pin"])
-        self.basic_gpio.toggle_pin_state(self.basic_gpio.tower_settings["red"]["pin"])
+        self.basic_gpio.toggle_pin_state("green")
+        self.basic_gpio.toggle_pin_state("red")
 
     
