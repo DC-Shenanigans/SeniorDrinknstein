@@ -62,7 +62,7 @@ class HD44780(object):
   RS = 0b00000001 # Register select bit
 
   # line address
-  LINE = [0x80,0x94,0xC0,0xD4]
+  LINE = [0x80,0xC0,0x94,0xD4]
 
   # --- constructor   --------------------------------------------------------
   

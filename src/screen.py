@@ -7,19 +7,20 @@ class ScreenGo():
 
     def write_to_screen(self,message):
         self.lcd.clear()
+
+        line_index = [1,3,2,4]
         count = 0
-        print = ""
 
+        print_output = ""
         for idx,letter in enumerate(message):
-            print = print + letter
-            if idx % 19 == 0:
-                self.lcd.write(f"{message}", count)
+            if count > 3:
+                print("message too long for screen")
+                break
+            print_output = print_output + letter
+
+            if len(print_output) == 20 or idx == len(message) - 1:
+                self.lcd.write(f"{print_output}", line_index[count])
+
+                print_output = ""
                 count += 1
-                print = ""
-                if count > 4:
-                    print("message too long for screen")
-                    break
-
-        
-
 
