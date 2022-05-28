@@ -1,9 +1,6 @@
 import board
 import digitalio
 
-# TODO: Init tower settings
-# TODO: write code for setting tower light modes, including timers for flashing if you are up to it
-
 class BasicGPIO():
     def __init__(self):
         print("setting up basic GPIO")
