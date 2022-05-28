@@ -3,6 +3,8 @@ import json
 # In:   json file path
 # Out:  Python object representing that json file
 #       None if error
+
+
 def load_from_json(json_file):
     try:
         with open(json_file, "r") as f:
@@ -15,6 +17,8 @@ def load_from_json(json_file):
 # Makes sure ingredients are available
 # In:   Configs as python objects
 # Out:  True if good, False if not (fatal error)
+
+
 def validate_config(pumps_config, drinks_config):
     avail_ing = []
     try:

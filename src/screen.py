@@ -1,18 +1,19 @@
 import board
 import hd44780
 
+
 class ScreenGo():
     def __init__(self):
-        self.lcd = hd44780.HD44780() # https://github.com/bablokb/circuitpython-hd44780
+        self.lcd = hd44780.HD44780()  # https://github.com/bablokb/circuitpython-hd44780
 
-    def write_to_screen(self,message):
+    def write_to_screen(self, message):
         self.lcd.clear()
 
-        line_index = [1,3,2,4]
+        line_index = [1, 3, 2, 4]
         count = 0
 
         print_output = ""
-        for idx,letter in enumerate(message):
+        for idx, letter in enumerate(message):
             if count > 3:
                 print("message too long for screen")
                 break
@@ -23,4 +24,3 @@ class ScreenGo():
 
                 print_output = ""
                 count += 1
-
