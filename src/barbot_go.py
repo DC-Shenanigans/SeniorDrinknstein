@@ -19,16 +19,22 @@ class BarbotGo():
 
         # Print startup message
         self.print_to_display(
-            "Starting up Dr. McGillicutty's Magic Drink Elixir Mixer")
+            "Starting up         \
+Dr. McGillicutty's  \
+Magic Drink Elixir  \
+Mixer               ")
 
         self.drink_list = load_from_json("drinks_config.json")
         self.basic_gpio = BasicGPIO()
 
         # Turn on the green light baby
-        time.sleep(2.5)
+        time.sleep(5)
 
         self.basic_gpio.toggle_pin_state("green")
-        self.idle_message = "Ready to mix!"
+        self.idle_message = "Dr. McGillicutty's  \
+Magic Drink Elixir  \
+Mixer               \
+Ready to mix!      "
         self.print_to_display(self.idle_message)
 
     def main_menu(self):
