@@ -7,7 +7,7 @@ module pump_mount (){
     pump_housing_length = 50 + pump_hole_inset + 10;
     pump_housing_width = 10;
 
-    pump_screw_radius = 4;
+    pump_screw_radius = 1.7;
     pump_hole_center = 0;
     
    
