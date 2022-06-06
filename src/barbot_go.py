@@ -106,9 +106,9 @@ Ready to mix!      "
         self.basic_gpio.toggle_pin_state("green")
 
         # Make green flash for 5 seconds saying it's done
-        for index in range(0, 19):
+        for index in range(0, 10):
             self.basic_gpio.toggle_pin_state("green")
-            time.sleep(.25)
+            time.sleep(1)
             self.basic_gpio.toggle_pin_state("green")
 
         self.print_to_display(self.idle_message)

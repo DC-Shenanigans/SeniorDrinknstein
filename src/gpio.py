@@ -5,6 +5,7 @@ import digitalio
 class BasicGPIO():
     def __init__(self):
         print("setting up basic GPIO")
+        
         self.pin_settings = {}
         self.pin_settings["GP16"] = {"pin": board.GP16, "drink": "rum"}
         self.pin_settings["GP17"] = {"pin": board.GP17, "drink": "coke"}
@@ -40,6 +41,9 @@ class BasicGPIO():
             self.initialize_digital_output(target_gpio)
         for target_gpio in self.button_settings:
             self.initialize_button_pull_down(target_gpio)
+        led = digitalio.DigitalInOut(board.LED)
+        led.direction = digitalio.Direction.OUTPUT
+        led.value = True
 
     def initialize_button_pull_down(self, target_gpio):
 
