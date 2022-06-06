@@ -1,5 +1,4 @@
-$fs=0.2;
-$fn=250;
+
 
 module power_board(shell_thickness=1)
 {
