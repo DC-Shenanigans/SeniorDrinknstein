@@ -38,34 +38,42 @@ module pi_mount(shell_thickness = 1)
 
     // Make the first pin
     translate([standoff_start_x,standoff_start_y,shell_thickness]) {
-        cylinder(standoff_height,standoff_radius,standoff_radius_bevel);
-        cylinder(safety_standoff_height,safety_standoff_radius,safety_standoff_radius);
-    }
+            difference(){
+                cylinder(safety_standoff_height,safety_standoff_radius,safety_standoff_radius);
+                #cylinder(standoff_height,standoff_radius,standoff_radius_bevel);
+            }
+        }
     
                                 
     // Make the second pin
 
     translate([standoff_start_x + pin_hole_separation_x,standoff_start_y,shell_thickness]) {
-            cylinder(standoff_height,standoff_radius,standoff_radius_bevel);
-            cylinder(safety_standoff_height,safety_standoff_radius,safety_standoff_radius);
+            difference(){
+                cylinder(safety_standoff_height,safety_standoff_radius,safety_standoff_radius);
+                #cylinder(standoff_height,standoff_radius,standoff_radius_bevel);
+
+            }
 
         }
         
     // Make the third pin
 
     translate([standoff_start_x ,standoff_start_y+ pin_hole_separation_y,shell_thickness]) {
-        cylinder(standoff_height,standoff_radius,standoff_radius_bevel);
-        cylinder(safety_standoff_height,safety_standoff_radius,safety_standoff_radius);
-
-
+        difference(){
+            cylinder(safety_standoff_height,safety_standoff_radius,safety_standoff_radius);
+            #cylinder(standoff_height,standoff_radius,standoff_radius_bevel);
+        }
     }
                                 
     // Make the fourth pin
 
     translate([standoff_start_x + pin_hole_separation_x ,standoff_start_y+ pin_hole_separation_y,shell_thickness]) {
-        cylinder(standoff_height,standoff_radius,standoff_radius_bevel);
-        cylinder(safety_standoff_height,safety_standoff_radius,safety_standoff_radius);        
-    }
+        difference(){
+            cylinder(safety_standoff_height,safety_standoff_radius,safety_standoff_radius);        
+            #cylinder(standoff_height,standoff_radius,standoff_radius_bevel);
+        }
+
+        }
 
 }
 
