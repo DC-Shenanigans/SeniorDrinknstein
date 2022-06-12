@@ -49,6 +49,8 @@ GPIO Reference:
 
 |GPIO Pin|Function|
 --- | --- |
+|GPIO 0|Screen - SDA|
+|GPIO 1|Screen - SCL|
 |GPIO 2|Pump 0 - Rum|
 |GPIO 3|Pump 1 - Pina Colada Mixer|
 |GPIO 4|Pump 2 - Mango Daquiri Mixer|
