@@ -60,6 +60,5 @@ GPIO Reference:
 
 Button Layout Reference:
 
---- | --- | --- | --- |
 |Mai Tai|Pina Colada|Mango Daiquiri|Margarita|
 |Red Wine|White Wine|Unused|Unusued|
