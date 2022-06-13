@@ -2,36 +2,36 @@
     {
         "name":"Rum & Coke",
         "ingredients": {
-            "rum":59,
-            "coke":118
+            "rum":120,
+            "coke":240
         }
     }, {
         "name":"Gin & Tonic",
         "ingredients": {
-            "gin":59,
-            "tonic":118
+            "gin":120,
+            "tonic":240 
         }
     }, {
         "name":"Margarita",
         "ingredients": {
-            "tequila":59,
-            "margmix":118
+            "tequila":120,
+            "margmix":240
         }
     }, {
         "name":"Mai Tai",
         "ingredients": {
-            "rum":59,
-            "maitaimix":118
+            "rum":120,
+            "maitaimix":240
         }
     }, {
         "name":"White Wine",
         "ingredients": {
-            "whitewine":177
+            "whitewine":360
         }
     }, {
         "name":"Red Wine",
         "ingredients": {
-            "redwine":177
+            "redwine":360
         }
     }
 ]
