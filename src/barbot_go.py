@@ -91,17 +91,15 @@ Ready to mix!      "
             for target_gpio in self.basic_gpio.pin_settings:
                 if "drink" in self.basic_gpio.pin_settings[target_gpio]:
                     if self.basic_gpio.pin_settings[target_gpio]["drink"] == liquor:
-                        
                         booze = {
                             "name":liquor,
                             "gpio":target_gpio,
                             "pour_time":liquor_to_pour[liquor],
-                            "time_poured":0,
                             "pouring":False
                         }
                         
                         drinklist.append(booze)
-        
+        start_time = time.time()
         for liquor in drinklist:
             timeout = liquor["pour_time"]
             name = liquor["name"]
@@ -115,18 +113,18 @@ Ready to mix!      "
         
         while run:
             print_text = ""
+            actual_time_running = (time.time() - start_time) * 10
+
             for liquor in drinklist:
-                if liquor["pouring"] and liquor["time_poured"] >= liquor["pour_time"]: #you have more time than the pour time turn off your gpio
+                if liquor["pouring"] and liquor["pour_time"] <= actual_time_running: #you have more time than the pour time turn off your gpio
                     self.basic_gpio.toggle_pin_state(liquor["gpio"])
                     liquor["pouring"] = False
                     finished_count += 1
                 elif liquor["pouring"]:
                     booze = liquor["name"]
-                    timeout = liquor["pour_time"] - liquor["time_poured"]
+                    timeout = liquor["pour_time"] - actual_time_running
                     print_text += f"pouring {booze} for {timeout / 10:0.1f} seconds... \
 "
-                    liquor["time_poured"] += 10
-
             self.print_to_display(print_text)
             time.sleep(1)           
 
