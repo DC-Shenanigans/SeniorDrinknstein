@@ -57,3 +57,9 @@ GPIO Reference:
 |GPIO 5|Pump 8 - Malort|
 |GPIO 6|Pump 4 - Tequila|
 |GPIO 7|Pump 5 - Margarita Mixer|
+
+Button Layout Reference:
+
+--- | --- | --- | --- |
+|Mai Tai|Pina Colada|Mango Daiquiri|Margarita|
+|Red Wine|White Wine|Unused|Unusued|
