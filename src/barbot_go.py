@@ -85,18 +85,53 @@ Ready to mix!      "
             value = ingredients[ingredient]
             liquor_to_pour[ingredient] = value
 
-        start_time = time.time()
+        drinklist = []
         for liquor in liquor_to_pour.keys():
             self.print_to_display(f"Looking for {liquor}...")
             for target_gpio in self.basic_gpio.pin_settings:
                 if "drink" in self.basic_gpio.pin_settings[target_gpio]:
                     if self.basic_gpio.pin_settings[target_gpio]["drink"] == liquor:
-                        timeout = liquor_to_pour[liquor]
-                        self.print_to_display(
-                            f"pouring {liquor} for {timeout / 10:0.1f} seconds...")
-                        self.basic_gpio.toggle_pin_state(target_gpio)
-                        time.sleep(timeout / 10)
-                        self.basic_gpio.toggle_pin_state(target_gpio)
+                        
+                        booze = {
+                            "name":liquor,
+                            "gpio":target_gpio,
+                            "pour_time":liquor_to_pour[liquor],
+                            "time_poured":0,
+                            "pouring":False
+                        }
+                        
+                        drinklist.append(booze)
+        
+        for liquor in drinklist:
+            timeout = liquor["pour_time"]
+            name = liquor["name"]
+            self.print_to_display(
+                f"pouring {name} for {timeout / 10:0.1f} seconds...")
+            self.basic_gpio.toggle_pin_state(liquor["gpio"])
+            liquor["pouring"] = True
+        
+        run = True
+        finished_count = 0
+        
+        while run:
+            print_text = ""
+            for liquor in drinklist:
+                if liquor["pouring"] and liquor["time_poured"] >= liquor["pour_time"]: #you have more time than the pour time turn off your gpio
+                    self.basic_gpio.toggle_pin_state(liquor["gpio"])
+                    liquor["pouring"] = False
+                    finished_count += 1
+                elif liquor["pouring"]:
+                    booze = liquor["name"]
+                    timeout = liquor["pour_time"] - liquor["time_poured"]
+                    print_text += f"pouring {booze} for {timeout / 10:0.1f} seconds... \
+"
+                    liquor["time_poured"] += 10
+
+            self.print_to_display(print_text)
+            time.sleep(1)           
+
+            if finished_count == len(liquor_to_pour):
+                run = False
 
         self.print_to_display(
             f"Your {self.drink_selection['name']}  is ready, please enjoy ^_^")
