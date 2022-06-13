@@ -60,4 +60,4 @@ GPIO Reference:
 
 Button Layout Reference:
 
-[Button Layout|(buttons.md)
+[Button Layout](buttons.md)
