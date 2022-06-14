@@ -57,3 +57,7 @@ GPIO Reference:
 |GPIO 5|Pump 8 - Malort|
 |GPIO 6|Pump 4 - Tequila|
 |GPIO 7|Pump 5 - Margarita Mixer|
+
+Button Layout Reference:
+
+[Button Layout](buttons.md)
