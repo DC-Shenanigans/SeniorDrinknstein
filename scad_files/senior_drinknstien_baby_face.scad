@@ -1,7 +1,7 @@
 include <display_mount.scad>;
 
-display_housing_width = 152;
-display_housing_depth = 30;
+display_housing_width = 155;
+display_housing_depth = 20;
 display_housing_height = 80;
 
 shell_thickness = 2;

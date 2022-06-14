@@ -24,13 +24,13 @@ module display_mount(){
 
     cube([screen_pcb_width,1,screen_pcb_height]);
 
-    translate([screw_hole_inset, 5, screw_hole_inset]) screw_hole();
+    //translate([screw_hole_inset, 5, screw_hole_inset]) screw_hole();
     
-    translate([screw_hole_inset, 5, screen_pcb_height - screw_hole_inset]) screw_hole();
+    //translate([screw_hole_inset, 5, screen_pcb_height - screw_hole_inset]) screw_hole();
     
-    translate([screen_pcb_width - screw_hole_inset - .1, 5, screen_pcb_height - screw_hole_inset]) screw_hole();
+    //translate([screen_pcb_width - screw_hole_inset - .7, 5, screen_pcb_height - screw_hole_inset]) screw_hole();
     
-    translate([screen_pcb_width - screw_hole_inset - .1, 5, screw_hole_inset]) screw_hole();
+    //translate([screen_pcb_width - screw_hole_inset - .7, 5, screw_hole_inset]) screw_hole();
 }
 
 //display_mount();
