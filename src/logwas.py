@@ -1,6 +1,5 @@
 # log was fuck
 # Does logging and stats
-from itertools import count
 import json
 
 # I want to make this fuck so badddd
