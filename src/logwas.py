@@ -2,7 +2,9 @@
 # Does logging and stats
 import json
 
-class logs:
+# I want to make this fuck so badddd
+# fuck it. I'll revert later if u want
+class fuck:
 
     stat_file = None
     stat_obj = None
