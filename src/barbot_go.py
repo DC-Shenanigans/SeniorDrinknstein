@@ -1,6 +1,7 @@
 # All rights are yours to do what you want with.
 # I can't stop you, I'm just pixels on a screen.
 
+import re
 import time
 from src.configs import load_from_json
 from src.gpio import BasicGPIO
@@ -29,7 +30,7 @@ Mixer               ")
         self.basic_gpio = BasicGPIO()
         
         # prepare logger
-        self.log = fuck("stats.json")
+        # self.log = fuck("stats.json")
 
         # Turn on the green light baby
         #time.sleep(5)
@@ -56,19 +57,20 @@ Ready to mix!      "
             for target_gpio in self.basic_gpio.button_settings:
                 if self.basic_gpio.button_settings[f'{target_gpio}']["object"].value:
                     self.print_to_display(
-                        f"Button {target_gpio} is being pressed")
+                        f"Button {target_gpio} is being pressed", True)
                     drink = self.basic_gpio.button_settings[f'{target_gpio}']["drink"]
                     for item in self.drink_list:
                         if drink == item["name"]:
-                            self.print_to_display(f"This is a(n) {drink}")
+                            article = "an" if re.search("^[AaEeIiOoUu]", drink) else "a"
+                            self.print_to_display(f"This is {article} {drink}")
                             self.drink_selection = item
                             self.make_drink()
 
                     time.sleep(0.5)
 
-    def print_to_display(self, text):
+    def print_to_display(self, text, immediate = False, letter_sleep = 0.01):
         # Clear the screen
-        self.screen.write_to_screen(text)
+        self.screen.write_to_screen(text, immediate, letter_sleep)
         print(text)
         # print("IDKWTFUDO, DO IT BETTER")
 
@@ -80,7 +82,7 @@ Ready to mix!      "
         self.basic_gpio.toggle_pin_state("red")
 
         # stat drink being poured
-        self.log.stat_drink(self.drink_selection['name'])
+        # self.log.stat_drink(self.drink_selection['name'])
 
         # use drink config to mix drink
         ingredients = self.drink_selection['ingredients']
@@ -111,7 +113,7 @@ Ready to mix!      "
             timeout = liquor["pour_time"]
             name = liquor["name"]
             self.print_to_display(
-                f"pouring {name} for {timeout / 10:0.1f} seconds...")
+                f"pouring {name} for {timeout / 10:0.1f} seconds...", True)
             self.basic_gpio.toggle_pin_state(liquor["gpio"])
             liquor["pouring"] = True
         
@@ -127,21 +129,21 @@ Ready to mix!      "
                     self.basic_gpio.toggle_pin_state(liquor["gpio"])
                     liquor["pouring"] = False
                     # Log time poured so far for current pin
-                    self.log.stat_pump(liquor["gpio"], actual_time_running / 10)
+                    # self.log.stat_pump(liquor["gpio"], actual_time_running / 10)
                     finished_count += 1
                 elif liquor["pouring"]:
                     booze = liquor["name"]
                     timeout = liquor["pour_time"] - actual_time_running
                     print_text += f"pouring {booze} for {timeout / 10:0.1f} seconds... \
 "
-            self.print_to_display(print_text)
+            self.print_to_display(print_text, True)
             time.sleep(1)           
 
             if finished_count == len(liquor_to_pour):
                 run = False
 
         self.print_to_display(
-            f"Your {self.drink_selection['name']}  is ready, please enjoy ^_^")
+            f"Your {self.drink_selection['name']}  is ready, please enjoy ^_^", False, 0.2)
 
         # Turn off the red light and on the green
         self.basic_gpio.toggle_pin_state("red")
