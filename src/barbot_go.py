@@ -19,6 +19,8 @@ class BarbotGo():
         # Set mode for some reason even though i'm going to require a screen
         self.run_mode = mode
 
+        self.basic_gpio = BasicGPIO()
+        
         # Print startup message
         self.print_to_display(
             "Starting up         \
@@ -27,20 +29,72 @@ Magic Drink Elixir  \
 Mixer               ")
 
         self.drink_list = load_from_json("drinks_config.json")
-        self.basic_gpio = BasicGPIO()
         
+        # See if we're in purge mode
+        if self.basic_gpio.button_settings[f'GP13']["object"].value:
+            self.basic_gpio.toggle_pin_state("red")
+            self.purge_mode()
+
         # prepare logger
-        # self.log = fuck("stats.json")
+        # There is something up with the truncate here :/
+        self.log = fuck("stats.json")
 
         # Turn on the green light baby
         #time.sleep(5)
 
+
+                
         self.basic_gpio.toggle_pin_state("green")
         self.idle_message = "Dr. McGillicutty's  \
 Magic Drink Elixir  \
 Mixer               \
 Ready to mix!      "
         self.print_to_display(self.idle_message)
+    
+    
+    def purge_mode(self):
+        self.print_to_display("Entering PURGE mode, one moment...............")
+        time.sleep(1)
+
+        run_loop = True
+        while(run_loop):
+            self.print_to_display("PURGE mode ENABLED")
+            for target_gpio in self.basic_gpio.button_settings:
+                if self.basic_gpio.button_settings[f'{target_gpio}']["object"].value:
+                    self.print_to_display(f"Button {target_gpio} is being pressed", True)
+                    button_map = {
+                        "GP8":"GP2",
+                        "GP9":"GP3",
+                        "GP10":"GP4",
+                        "GP11":"GP5",
+                        "GP12":"GP6",
+                        "GP13":"GP7",
+                        "GP14":"GP16",
+                        "GP15":"GP17"
+                    }
+                    if self.basic_gpio.button_settings['GP8']["object"].value == True \
+                        and self.basic_gpio.button_settings['GP9']["object"].value == True:
+                        self.print_to_display("You escaped the PURGE! Now have a drink on Dr. McGillicutty ^_^")
+                        run_loop = False
+                    if self.basic_gpio.button_settings['GP8']["object"].value == True \
+                        and self.basic_gpio.button_settings['GP12']["object"].value == True:
+                        self.print_to_display("I'm sorry Dave, I can't let you do that")
+                    if self.basic_gpio.button_settings['GP8']["object"].value == True \
+                        and self.basic_gpio.button_settings['GP13']["object"].value == True:
+                        self.print_to_display("PROTIP: Aask me no questions and I'll tell you no lies")
+                    else:
+                        liquor = self.basic_gpio.pin_settings[button_map[target_gpio]]["drink"]
+                        if liquor == "malort":
+                            self.print_to_display("KILL ALL HUMANS")
+                        else:
+                            self.print_to_display(f"Purging {liquor}....")
+
+                        self.basic_gpio.purge_mode(target_gpio, button_map[target_gpio])
+
+                        if liquor == "malort":
+                            self.print_to_display("Thank you for using Dr. McGillicutty's Suicide Booth!")
+                        else:
+                            self.print_to_display(f"Done purging Dr. McGillicutty's {liquor}!")
 
     def main_menu(self):
         if(self.run_mode == "CONSOLE"):

@@ -8,9 +8,9 @@ class BasicGPIO():
         
         self.pin_settings = {}
         self.pin_settings["GP2"] = {"pin": board.GP2, "drink": "rum"}
-        self.pin_settings["GP3"] = {"pin": board.GP3, "drink": "coke"}
-        self.pin_settings["GP4"] = {"pin": board.GP4, "drink": "gin"}
-        self.pin_settings["GP5"] = {"pin": board.GP5, "drink": "tonic"}
+        self.pin_settings["GP3"] = {"pin": board.GP3, "drink": "pina_colada"}
+        self.pin_settings["GP4"] = {"pin": board.GP4, "drink": "daqmix"}
+        self.pin_settings["GP5"] = {"pin": board.GP5, "drink": "malort"}
         self.pin_settings["GP6"] = {"pin": board.GP6, "drink": "tequila"}
         self.pin_settings["GP7"] = {"pin": board.GP7, "drink": "margmix"}
         self.pin_settings["GP16"] = {"pin": board.GP16, "drink": "maitaimix"}
@@ -24,15 +24,14 @@ class BasicGPIO():
             "pin": board.GP22, "color": "loud", "status": False}
 
         self.button_settings = {}
-        self.button_settings["GP8"] = {"pin": board.GP8, "drink": "Rum & Coke"}
-        self.button_settings["GP9"] = {
-            "pin": board.GP9, "drink": "Gin & Tonic"}
-        self.button_settings["GP10"] = {"pin": board.GP10, "drink": "Margarita"}
-        self.button_settings["GP11"] = {"pin": board.GP11, "drink": "Mai Tai"}
-        self.button_settings["GP12"] = {"pin": board.GP12, "drink": "White Wine"}
-        self.button_settings["GP13"] = {"pin": board.GP13, "drink": "Red Wine"}
-        self.button_settings["GP14"] = {"pin": board.GP14, "drink": "Crash"}
-        self.button_settings["GP15"] = {"pin": board.GP15, "drink": "Override"}
+        self.button_settings["GP8"] = {"pin": board.GP8, "drink": "Mai Tai"}
+        self.button_settings["GP9"] = {"pin": board.GP9, "drink": "Pina Colada"}
+        self.button_settings["GP10"] = {"pin": board.GP10, "drink": "Mango Daquiri"}
+        self.button_settings["GP11"] = {"pin": board.GP11, "drink": "Margarita"}
+        self.button_settings["GP12"] = {"pin": board.GP12, "drink": "Red Wine"}
+        self.button_settings["GP13"] = {"pin": board.GP13, "drink": "White Wine"}
+        self.button_settings["GP14"] = {"pin": board.GP14, "drink": "Malort"}
+        self.button_settings["GP15"] = {"pin": board.GP15, "drink": "Rum"}
 
         self.initialize_gpio()
 
@@ -78,3 +77,11 @@ class BasicGPIO():
             self.pin_settings[f'{target_gpio}']["object"].value = False
         else:
             self.pin_settings[f'{target_gpio}']["object"].value = True
+    
+    def purge_mode(self, button_gpio, relay_gpio):
+        # set the gpio to high while the button is held
+        while(self.button_settings[f'{button_gpio}']["object"].value == True):
+            self.pin_settings[relay_gpio]["object"].value = True
+        self.pin_settings[relay_gpio]["object"].value = False
+        
+

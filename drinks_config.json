@@ -1,15 +1,15 @@
 [
     {
-        "name":"Rum & Coke",
+        "name":"Mango Daquiri",
         "ingredients": {
             "rum":120,
-            "coke":240
+            "daqmix":240
         }
     }, {
-        "name":"Gin & Tonic",
+        "name":"Pina Colada",
         "ingredients": {
-            "gin":120,
-            "tonic":240 
+            "rum":120,
+            "pina_colada":240 
         }
     }, {
         "name":"Margarita",
@@ -32,6 +32,18 @@
         "name":"Red Wine",
         "ingredients": {
             "redwine":360
+        }
+    },
+    {
+        "name":"Malort",
+        "ingredients": {
+            "malort":120
+        }
+    },
+    {
+        "name":"Rum",
+        "ingredients": {
+            "rum":120
         }
     }
 ]
