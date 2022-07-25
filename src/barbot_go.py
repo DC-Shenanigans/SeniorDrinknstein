@@ -34,6 +34,14 @@ Mixer               ")
         if self.basic_gpio.button_settings[f'GP13']["object"].value:
             self.basic_gpio.toggle_pin_state("red")
             self.purge_mode()
+        
+        # See if we're in mapping mode
+        if self.basic_gpio.button_settings[f'GP14']["object"].value:
+            self.basic_gpio.toggle_pin_state("red")
+            self.basic_gpio.toggle_pin_state("green")
+            self.button_mapping_mode()
+        
+        self.button_mapping_mode()
 
         # prepare logger
         # There is something up with the truncate here :/
@@ -51,14 +59,32 @@ Mixer               \
 Ready to mix!      "
         self.print_to_display(self.idle_message)
     
-    
+    def button_mapping_mode(self):
+        self.print_to_display("Entering BUTTON MAPPING mode, one moment...")
+        run_loop = True
+        self.print_to_display("Now in BUTTON MAPPING mode BEEP BOOP BOP BEEEEEEP")
+        count = 0
+        while(run_loop):
+            count +=1
+            if count % 5   000 == 0:
+                self.print_to_display("Get back to mappin why don't ya!", True)
+
+            for target_gpio in self.basic_gpio.button_settings:
+                if self.basic_gpio.button_settings[f'{target_gpio}']["object"].value:
+                    self.print_to_display(f"Button {target_gpio} was being pressed", True)
+                    if self.basic_gpio.button_settings['GP8']["object"].value == True \
+                        and self.basic_gpio.button_settings['GP9']["object"].value == True:
+                        self.print_to_display("Exiting Mapping Mode ^_^")
+                        run_loop = False
+                    
+
     def purge_mode(self):
-        self.print_to_display("Entering PURGE mode, one moment...............")
+        self.print_to_display("Entering PURGE mode, one moment...")
         time.sleep(1)
 
         run_loop = True
+        self.print_to_display("PURGE mode ENABLED")
         while(run_loop):
-            self.print_to_display("PURGE mode ENABLED")
             for target_gpio in self.basic_gpio.button_settings:
                 if self.basic_gpio.button_settings[f'{target_gpio}']["object"].value:
                     self.print_to_display(f"Button {target_gpio} is being pressed", True)
@@ -95,6 +121,8 @@ Ready to mix!      "
                             self.print_to_display("Thank you for using Dr. McGillicutty's Suicide Booth!")
                         else:
                             self.print_to_display(f"Done purging Dr. McGillicutty's {liquor}!")
+
+                        self.print_to_display("PURGE mode ENABLED", immediate=True)
 
     def main_menu(self):
         if(self.run_mode == "CONSOLE"):
@@ -197,7 +225,7 @@ Ready to mix!      "
                 run = False
 
         self.print_to_display(
-            f"Your {self.drink_selection['name']}  is ready, please enjoy ^_^", False, 0.2)
+            f"Your {self.drink_selection['name']} is ready, please enjoy ^_^", False, 0.01)
 
         # Turn off the red light and on the green
         self.basic_gpio.toggle_pin_state("red")

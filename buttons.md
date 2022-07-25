@@ -6,4 +6,4 @@ Mai Tai | Pina Colada | Mango Daiquiri | Margarita
 
 Bottom Row, from Left to Right:
 
-Red Wine | White Wine | Malort | Rum
+Red Wine | White Wine | Water | Water

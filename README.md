@@ -21,43 +21,59 @@ Required features:
 
 Drink List:
 
-|Drink |Alcohol Amount| Mixer Amount |
---- | --- | --- |
-|Mango Daquiri|59mL Rum|118mL Mango Mixer|
-|Pina Colada|59mL Rum| 118mL Pina Colada Mixer|
-|Margarita|59mL Tequila|118mL Marg. Mixer|
-|Mai Tai| 59mL Rum|118mL Mai Tai Mixer|
-|White Wine| 177mL White Wine| N/A|
-|Red Wine| 177mL Red Wine| N/A|
+|Drink |Alcohol Amount| Mixer Amount | Button | 
+--- | --- | --- | --- |
+|Mai Tai| 59mL Rum|118mL Mai Tai Mixer| 0
+|Pina Colada|59mL Rum| 118mL Pina Colada Mixer| 1
+|Mango Daquiri|59mL Rum|118mL Mango Mixer| 2
+|Margarita|59mL Tequila|118mL Marg. Mixer | 3
+|Red Wine| 177mL Red Wine| N/A|4
+|White Wine| 177mL White Wine| N/A|5
+|Water| 177mL Water| N/A | 6
+|Water| 177mL Water| N/A| 7
 
 
 Pump List:
 
 |Pump |Pump Contains|
 --- | --- |
-|Pump 0|Rum|
-|Pump 1|Pina Colada Mixer|
-|Pump 2|Mango Daquiri Mixer|
-|Pump 3|Mai Tai Mixer|
-|Pump 4|Tequila|
-|Pump 5|Margarita Mixer|
-|Pump 6|White Wine|
-|Pump 7|Red Wine|
-|Pump 8|Malort
+|Pump 0 |Rum|
+|Pump 1 |Pina Colada Mixer|
+|Pump 2 |Mango Daquiri Mixer|
+|Pump 3 |Water
+|Pump 4 |Tequila|
+|Pump 5 |Margarita Mixer|
+|Pump 6 |Mai Tai Mixer|
+|Pump 7 |White Wine|
+|Pump 8 |Red Wine|
 
 GPIO Reference:
 
-|GPIO Pin|Function|
---- | --- |
-|GPIO 0|Screen - SDA|
-|GPIO 1|Screen - SCL|
-|GPIO 2|Pump 0 - Rum|
-|GPIO 3|Pump 1 - Pina Colada Mixer|
-|GPIO 4|Pump 2 - Mango Daquiri Mixer|
-|GPIO 5|Pump 8 - Malort|
-|GPIO 6|Pump 4 - Tequila|
-|GPIO 7|Pump 5 - Margarita Mixer|
+|GPIO Pin|Function|drink_name
+--- | --- | --- | 
+|GPIO 0| Screen - SDA| NA
+|GPIO 1| Screen - SCL| NA
+|GPIO 2 | Pump | rum 
+|GPIO 3 | Pump | pina_colada 
+|GPIO 4 | Pump | daqmix 
+|GPIO 5 | Pump | water 
+|GPIO 6 | Pump | tequila 
+|GPIO 7 | Pump | margmix 
+|GPIO 16 | Pump | maitaimix 
+|GPIO 17 | Pump | whitewine 
+|GPIO 19 | Pump | redwine 
+|GPIO 8| Selection Button | Mai Tai
+|GPIO 9| Selection Button | Pina Colada
+|GPIO 10| Selection Button | Mango Daquiri
+|GPIO 11| Selection Button | Margarita
+|GPIO 12| Selection Button | Red Wine
+|GPIO 13| Selection Button | White Wine
+|GPIO 14| Selection Button | Water
+|GPIO 15| Selection Button | Rum
 
 Button Layout Reference:
 
 [Button Layout](buttons.md)
+
+
+

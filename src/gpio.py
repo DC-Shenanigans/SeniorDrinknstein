@@ -10,7 +10,7 @@ class BasicGPIO():
         self.pin_settings["GP2"] = {"pin": board.GP2, "drink": "rum"}
         self.pin_settings["GP3"] = {"pin": board.GP3, "drink": "pina_colada"}
         self.pin_settings["GP4"] = {"pin": board.GP4, "drink": "daqmix"}
-        self.pin_settings["GP5"] = {"pin": board.GP5, "drink": "malort"}
+        self.pin_settings["GP5"] = {"pin": board.GP5, "drink": "water"}
         self.pin_settings["GP6"] = {"pin": board.GP6, "drink": "tequila"}
         self.pin_settings["GP7"] = {"pin": board.GP7, "drink": "margmix"}
         self.pin_settings["GP16"] = {"pin": board.GP16, "drink": "maitaimix"}
@@ -30,7 +30,7 @@ class BasicGPIO():
         self.button_settings["GP11"] = {"pin": board.GP11, "drink": "Margarita"}
         self.button_settings["GP12"] = {"pin": board.GP12, "drink": "Red Wine"}
         self.button_settings["GP13"] = {"pin": board.GP13, "drink": "White Wine"}
-        self.button_settings["GP14"] = {"pin": board.GP14, "drink": "Malort"}
+        self.button_settings["GP14"] = {"pin": board.GP14, "drink": "Water"}
         self.button_settings["GP15"] = {"pin": board.GP15, "drink": "Rum"}
 
         self.initialize_gpio()

@@ -1,6 +1,6 @@
 
 module button_cutout(){
-    button_radius = 8;
+    button_radius = 8.05;
 
     translate([button_radius,0,button_radius]) rotate([270,0,0])  cylinder(40,button_radius,    button_radius);
 }

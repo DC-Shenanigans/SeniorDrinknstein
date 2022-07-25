@@ -48,4 +48,4 @@ class ScreenGo():
                             self.current_screen[line_index].append(letter)
                         if letter != ' ':
                             self.lcd.write("".join(self.current_screen[line_index]), line_indexes[line_index])
-                            time.sleep(letter_sleep)
+                            #time.sleep(letter_sleep)
