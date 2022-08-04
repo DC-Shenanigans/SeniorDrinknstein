@@ -41,7 +41,7 @@ Mixer               ")
             self.basic_gpio.toggle_pin_state("green")
             self.button_mapping_mode()
         
-        self.button_mapping_mode()
+        # self.button_mapping_mode()
 
         # prepare logger
         # There is something up with the truncate here :/
@@ -66,7 +66,7 @@ Ready to mix!      "
         count = 0
         while(run_loop):
             count +=1
-            if count % 5   000 == 0:
+            if count % 5000 == 0:
                 self.print_to_display("Get back to mappin why don't ya!", True)
 
             for target_gpio in self.basic_gpio.button_settings:

@@ -24,14 +24,14 @@ class BasicGPIO():
             "pin": board.GP22, "color": "loud", "status": False}
 
         self.button_settings = {}
-        self.button_settings["GP8"] = {"pin": board.GP8, "drink": "Mai Tai"}
-        self.button_settings["GP9"] = {"pin": board.GP9, "drink": "Pina Colada"}
-        self.button_settings["GP10"] = {"pin": board.GP10, "drink": "Mango Daquiri"}
-        self.button_settings["GP11"] = {"pin": board.GP11, "drink": "Margarita"}
-        self.button_settings["GP12"] = {"pin": board.GP12, "drink": "Red Wine"}
-        self.button_settings["GP13"] = {"pin": board.GP13, "drink": "White Wine"}
+        self.button_settings["GP8"] = {"pin": board.GP8, "drink": "Water"}
+        self.button_settings["GP9"] = {"pin": board.GP9, "drink": "White Wine"}
+        self.button_settings["GP10"] = {"pin": board.GP10, "drink": "Red Wine"}
+        self.button_settings["GP11"] = {"pin": board.GP11, "drink": "Mai Tai"}
+        self.button_settings["GP12"] = {"pin": board.GP12, "drink": "Pina Colada"}
+        self.button_settings["GP13"] = {"pin": board.GP13, "drink": "Margarita"}
         self.button_settings["GP14"] = {"pin": board.GP14, "drink": "Water"}
-        self.button_settings["GP15"] = {"pin": board.GP15, "drink": "Rum"}
+        self.button_settings["GP15"] = {"pin": board.GP15, "drink": "Mango Daquiri"}
 
         self.initialize_gpio()
 
