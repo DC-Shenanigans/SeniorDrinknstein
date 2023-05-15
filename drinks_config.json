@@ -1,49 +1,93 @@
 [
     {
-        "name":"Mango Daquiri",
+        "name":"Week 9",
         "ingredients": {
-            "rum":120,
-            "daqmix":240
+            "silica_gold":100,
+            "base_a":150,
+            "base_b":150,
+            "calmag_oac":0,
+            "n_primer":100,
+            "bloom":0,
+            "signal":0
         }
     }, {
-        "name":"Pina Colada",
+        "name":"Week 10",
         "ingredients": {
-            "rum":120,
-            "pina_colada":240 
+            "silica_gold":100,
+            "base_a":150,
+            "base_b":150,
+            "calmag_oac":0,
+            "n_primer":100,
+            "bloom":0,
+            "signal":0
         }
     }, {
-        "name":"Margarita",
+        "name":"Week 11",
         "ingredients": {
-            "tequila":120,
-            "margmix":240
+            "silica_gold":100,
+            "base_a":150,
+            "base_b":150,
+            "calmag_oac":0,
+            "n_primer":100,
+            "bloom":0,
+            "signal":0
         }
     }, {
-        "name":"Mai Tai",
+        "name":"Week 4",
         "ingredients": {
-            "rum":120,
-            "maitaimix":240
+            "silica_gold":40,
+            "base_a":50,
+            "base_b":50,
+            "calmag_oac":20,
+            "n_primer":0,
+            "bloom":40,
+            "signal":0
         }
     }, {
-        "name":"White Wine",
+        "name":"Week 5",
         "ingredients": {
-            "whitewine":360
+            "silica_gold":100,
+            "base_a":150,
+            "base_b":150,
+            "calmag_oac":0,
+            "n_primer":100,
+            "bloom":0,
+            "signal":0
         }
     }, {
-        "name":"Red Wine",
+        "name":"Week 6",
         "ingredients": {
-            "redwine":360
+            "silica_gold":100,
+            "base_a":150,
+            "base_b":150,
+            "calmag_oac":0,
+            "n_primer":100,
+            "bloom":0,
+            "signal":0
         }
     },
     {
-        "name":"Water",
+        "name":"Week 7",
         "ingredients": {
-            "water":180
+            "silica_gold":100,
+            "base_a":150,
+            "base_b":150,
+            "calmag_oac":0,
+            "n_primer":100,
+            "bloom":0,
+            "signal":0
         }
     },
     {
-        "name":"Rum",
+        "name":"Week 8",
         "ingredients": {
-            "rum":120
+            "silica_gold":100,
+            "base_a":150,
+            "base_b":150,
+            "calmag_oac":0,
+            "n_primer":100,
+            "bloom":0,
+            "signal":0
         }
     }
 ]

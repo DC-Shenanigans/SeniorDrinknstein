@@ -1,4 +1,4 @@
-import time
+import asyncio
 import board
 import hd44780
 
@@ -14,7 +14,17 @@ class ScreenGo():
         except:
             print("Unable to initialize screen")
 
-    def write_to_screen(self, message, immediate = False, letter_sleep = 0.01):
+    async def write_line(self, line_index, line, letter_sleep):
+        for letter_index, letter in enumerate(line):
+            if len(self.current_screen[line_index]) > letter_index:
+                self.current_screen[line_index][letter_index] = letter
+            else:
+                self.current_screen[line_index].append(letter)
+            if letter != ' ':
+                self.lcd.write("".join(self.current_screen[line_index]), line_index + 1)
+                # await asyncio.sleep(letter_sleep)
+
+    async def write_to_screen(self, message, immediate=False, letter_sleep=0.01):
         if self.has_screen:
             self.lcd.clear()
 
@@ -34,18 +44,13 @@ class ScreenGo():
 
                     line = []
                     count += 1
-            
-            line_indexes = [1, 2, 3, 4]
-            for line_index, line in enumerate(self.to_write):
-                if immediate:
-                    self.lcd.write(line, line_indexes[line_index])
-                else:
-                    self.current_screen[line_index] = []
-                    for letter_index, letter in enumerate(line):
-                        if len(self.current_screen[line_index]) > letter_index:
-                            self.current_screen[line_index][letter_index] = letter
-                        else:
-                            self.current_screen[line_index].append(letter)
-                        if letter != ' ':
-                            self.lcd.write("".join(self.current_screen[line_index]), line_indexes[line_index])
-                            #time.sleep(letter_sleep)
+
+            if immediate:
+                tasks = []
+                for line_index, line in enumerate(self.to_write):
+                    tasks.append(self.write_line(line_index, line, letter_sleep))
+                await asyncio.gather(*tasks)
+            else:
+                self.current_screen = [[' ' for _ in range(20)] for _ in range(4)]
+                for line_index, line in enumerate(self.to_write):
+                    await self.write_line(line_index, line, letter_sleep)

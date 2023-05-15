@@ -1,0 +1,14 @@
+{
+    "GP2":      {"pin": "GP2", "drink": "silica_gold"},
+    "GP3":      {"pin": "GP3", "drink": "base_a"},
+    "GP4":      {"pin": "GP4", "drink": "base_b"},
+    "GP5":      {"pin": "GP5", "drink": "calmag_oac"},
+    "GP6":      {"pin": "GP6", "drink": "n_primer"},
+    "GP7":      {"pin": "GP7", "drink": "root_boost"},
+    "GP16":     {"pin": "GP16", "drink": "bloom"},
+    "GP17":     {"pin": "GP17", "drink": "signal"},
+    "GP19":     {"pin": "GP19", "drink": "canopy_boost"},
+    "green":    {"pin": "GP20", "color": "green","status":false},
+    "red":      {"pin": "GP21", "color": "red","status":false},
+    "loud":     {"pin": "GP22", "color": "loud","status":false}
+}

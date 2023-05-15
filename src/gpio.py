@@ -1,37 +1,22 @@
 import board
 import digitalio
-
+from src.configs import load_from_json
 
 class BasicGPIO():
     def __init__(self):
-        print("setting up basic GPIO")
-        
-        self.pin_settings = {}
-        self.pin_settings["GP2"] = {"pin": board.GP2, "drink": "rum"}
-        self.pin_settings["GP3"] = {"pin": board.GP3, "drink": "pina_colada"}
-        self.pin_settings["GP4"] = {"pin": board.GP4, "drink": "daqmix"}
-        self.pin_settings["GP5"] = {"pin": board.GP5, "drink": "water"}
-        self.pin_settings["GP6"] = {"pin": board.GP6, "drink": "tequila"}
-        self.pin_settings["GP7"] = {"pin": board.GP7, "drink": "margmix"}
-        self.pin_settings["GP16"] = {"pin": board.GP16, "drink": "maitaimix"}
-        self.pin_settings["GP17"] = {"pin": board.GP17, "drink": "whitewine"}
-        self.pin_settings["GP19"] = {"pin": board.GP19, "drink": "redwine"}
-        self.pin_settings["green"] = {
-            "pin": board.GP20, "color": "green", "status": False, "mode": None}
-        self.pin_settings["red"] = {
-            "pin": board.GP21, "color": "red", "status": True, "mode": "solid"}
-        self.pin_settings["loud"] = {
-            "pin": board.GP22, "color": "loud", "status": False}
+        print("setting up GPIO pins...")
 
-        self.button_settings = {}
-        self.button_settings["GP8"] = {"pin": board.GP8, "drink": "Water"}
-        self.button_settings["GP9"] = {"pin": board.GP9, "drink": "White Wine"}
-        self.button_settings["GP10"] = {"pin": board.GP10, "drink": "Red Wine"}
-        self.button_settings["GP11"] = {"pin": board.GP11, "drink": "Mai Tai"}
-        self.button_settings["GP12"] = {"pin": board.GP12, "drink": "Pina Colada"}
-        self.button_settings["GP13"] = {"pin": board.GP13, "drink": "Margarita"}
-        self.button_settings["GP14"] = {"pin": board.GP14, "drink": "Water"}
-        self.button_settings["GP15"] = {"pin": board.GP15, "drink": "Mango Daquiri"}
+        self.pin_settings = load_from_json('pin_settings.json')
+        self.button_settings = load_from_json('button_settings.json')
+
+        # Convert string pin names to actual board pins
+        for key, setting in self.pin_settings.items():
+            if 'pin' in setting:
+                setting['pin'] = getattr(board, setting['pin'])
+
+        for key, setting in self.button_settings.items():
+            if 'pin' in setting:
+                setting['pin'] = getattr(board, setting['pin'])
 
         self.initialize_gpio()
 
