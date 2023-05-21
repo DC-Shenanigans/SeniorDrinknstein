@@ -80,11 +80,11 @@ Ready to mix!      "
                     
 
     async def purge_mode(self):
-        await self.print_to_display("Entering PURGE mode, one moment...")
+        await self.print_to_display("Entering PURGE mode, one moment...", immediate=True)
         time.sleep(1)
 
         run_loop = True
-        await self.print_to_display("PURGE mode ENABLED")
+        await self.print_to_display("PURGE mode ENABLED", immediate=True)
         while(run_loop):
             for target_gpio in self.basic_gpio.button_settings:
                 if self.basic_gpio.button_settings[f'{target_gpio}']["object"].value:
@@ -114,7 +114,7 @@ Ready to mix!      "
                         if liquor == "malort":
                             await self.print_to_display("KILL ALL HUMANS")
                         else:
-                            await self.print_to_display(f"Purging {liquor}....")
+                            await self.print_to_display(f"Purging {liquor}....", True)
 
                         self.basic_gpio.purge_mode(target_gpio, button_map[target_gpio])
 
@@ -174,7 +174,7 @@ Ready to mix!      "
 
         drinklist = []
         for liquor in liquor_to_pour.keys():
-            self.print_to_display(f"Looking for {liquor}...")
+            self.print_to_display(f"Looking for {liquor}...",immediate=True)
             for target_gpio in self.basic_gpio.pin_settings:
                 if "drink" in self.basic_gpio.pin_settings[target_gpio]:
                     if self.basic_gpio.pin_settings[target_gpio]["drink"] == liquor:

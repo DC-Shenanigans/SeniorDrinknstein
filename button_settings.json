@@ -1,10 +1,10 @@
 {
-    "GP8": {"pin": "GP8", "drink": "Week 9"},
-    "GP9": {"pin": "GP9", "drink": "Week 10"},
-    "GP10": {"pin": "GP10", "drink": "Week 11"},
-    "GP11": {"pin": "GP11", "drink": "Week 4"},
-    "GP12": {"pin": "GP12", "drink": "Week 5"},
-    "GP13": {"pin": "GP13", "drink": "Week 6"},
-    "GP14": {"pin": "GP14", "drink": "Week 7"},
+    "GP8": {"pin": "GP8", "drink": "Button 6 Week "},
+    "GP9": {"pin": "GP9", "drink": "Button 5 Late Bloom Week 7 & 8"},
+    "GP10": {"pin": "GP10", "drink": "Button 1 Late Veg Week 7 & 8"},
+    "GP11": {"pin": "GP11", "drink": "Button 2 Early Bloom Week 1 & 2"},
+    "GP12": {"pin": "GP12", "drink": "Button 4 Late Bloom Week 5 & 6"},
+    "GP13": {"pin": "GP13", "drink": "Button 8 Week 11"},
+    "GP14": {"pin": "GP14", "drink": "Button 3 Mid Bloom Week 3 & 4"},
     "GP15": {"pin": "GP15", "drink": "Week 8"}
 }

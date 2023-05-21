@@ -1,93 +1,95 @@
 [
     {
-        "name":"Week 9",
+        "name":"Button 7 Week 10", 
         "ingredients": {
-            "silica_gold":100,
-            "base_a":150,
-            "base_b":150,
-            "calmag_oac":0,
-            "n_primer":100,
-            "bloom":0,
+            "base_a":7,
+            "base_b":7,
+            "silica_gold":4,
+            "calmag_oac":2,
+            "n_primer":4,
+            "root_boost":2,
+            "bloom":2,
+            "signal":1
+        }
+    }, {
+        "name":"Button 6 Week 9",
+        "ingredients": {
+            "base_a":7,
+            "base_b":7,
+            "silica_gold":4,
+            "calmag_oac":2,
+            "n_primer":4,
+            "root_boost":1,
+            "bloom":2,
             "signal":0
         }
     }, {
-        "name":"Week 10",
+        "name":"Button 5 Late Bloom Week 7 & 8", 
         "ingredients": {
-            "silica_gold":100,
-            "base_a":150,
-            "base_b":150,
-            "calmag_oac":0,
-            "n_primer":100,
-            "bloom":0,
-            "signal":0
+            "base_a":12,
+            "base_b":12,
+            "silica_gold":6,
+            "calmag_oac":3,
+            "bloom":6,
+            "signal":12
+
         }
     }, {
-        "name":"Week 11",
+        "name":"Button 1 Late Veg Week 7 & 8", 
         "ingredients": {
-            "silica_gold":100,
-            "base_a":150,
-            "base_b":150,
-            "calmag_oac":0,
-            "n_primer":100,
-            "bloom":0,
-            "signal":0
+            "base_a":18,
+            "base_b":18,
+            "silica_gold":12,
+            "calmag_oac":6,
+            "n_primer":12,
+            "root_boost":6 
         }
     }, {
-        "name":"Week 4",
+        "name":"Button 2 Early Bloom Week 1 & 2", 
         "ingredients": {
-            "silica_gold":40,
-            "base_a":50,
-            "base_b":50,
-            "calmag_oac":20,
+            "base_a":21,
+            "base_b":21,
+            "silica_gold":12,
+            "calmag_oac":6,
+            "n_primer":12,
+            "root_boost":6,
+            "bloom":6,
+            "signal":3
+        }
+    }, {
+        "name":"Button 4 Late Bloom Week 5 & 6", 
+        "ingredients": {
+            "base_a":12,
+            "base_b":12,
+            "silica_gold":12,
+            "calmag_oac":6,
+            "bloom":12,
+            "signal":12
+        }
+    },
+    {
+        "name":"Button 8 Week 11", 
+        "ingredients": {
+            "base_a":5,
+            "base_b":5,
+            "silica_gold":4,
+            "calmag_oac":2,
             "n_primer":0,
-            "bloom":40,
-            "signal":0
-        }
-    }, {
-        "name":"Week 5",
-        "ingredients": {
-            "silica_gold":100,
-            "base_a":150,
-            "base_b":150,
-            "calmag_oac":0,
-            "n_primer":100,
-            "bloom":0,
-            "signal":0
-        }
-    }, {
-        "name":"Week 6",
-        "ingredients": {
-            "silica_gold":100,
-            "base_a":150,
-            "base_b":150,
-            "calmag_oac":0,
-            "n_primer":100,
-            "bloom":0,
+            "root_boost":1,
+            "bloom":4 ,
             "signal":0
         }
     },
     {
-        "name":"Week 7",
+        "name":"Button 3 Mid Bloom Week 3 & 4", 
         "ingredients": {
-            "silica_gold":100,
-            "base_a":150,
-            "base_b":150,
-            "calmag_oac":0,
-            "n_primer":100,
-            "bloom":0,
-            "signal":0
-        }
-    },
-    {
-        "name":"Week 8",
-        "ingredients": {
-            "silica_gold":100,
-            "base_a":150,
-            "base_b":150,
-            "calmag_oac":0,
-            "n_primer":100,
-            "bloom":0,
-            "signal":0
+            "base_a":15,
+            "base_b":15,
+            "silica_gold":12,
+            "calmag_oac":6,
+            "root_boost":3,
+            "bloom":12,
+            "signal":6
         }
     }
 ]
